@@ -28,7 +28,7 @@
                     <span v-if="reply.ups.lenght>0"> ∆ {{ reply.ups.length}}</span>
                     <span v-else></span>
                 </div>
-                <p v-html="reply.content"></p>
+                <p v-html="reply.content" class="replyContentStyle"></p>
             </div>
         </div>
       </div>
@@ -146,5 +146,8 @@ width: 30px;
 
 .markdown-text img {
   width: 92% !important;
+}
+.replyContentStyle ul{
+  list-style: none;
 }
 </style>

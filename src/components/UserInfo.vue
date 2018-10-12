@@ -18,11 +18,13 @@
               <p>回复的主题</p>
               <ul>
                   <li v-for="item in userInfo.recent_replies">
+                      <img :src="item.author.avatar_url" >
                       <router-link :to='{name:"post_content",params:{id:item.id}}'>{{item.title}}</router-link>
+                      <span>最近回复于{{item.last_reply_at | formatDate}}</span>
                     </li>
               </ul>
           </div>
-          <div class="topic">
+          <div class="topics">
               <p>创建的主题</p>
               <ul>
                   <li v-for="item in userInfo.recent_topics">
@@ -69,9 +71,25 @@ export default {
 }
 .userInfomation section {
   padding: 12px;
+  position: relative;
+}
+.userInfomation section p,
+.userInfomation section span{
+    font-size: 14px;
+}
+.userInfomation section p{
+    padding-top: 5px;
+}
+.userInfomation section span{
+    color:#778087;
+    position: absolute;
+    transform: translateX(10px)
+}
+.userInfomation section p:nth-last-child(){
+    color: #ababab;
 }
 .userInfomation img {
-  width: 30px;
+  width: 40px;
 }
 .userInfomation li {
   list-style: none;
@@ -80,6 +98,7 @@ export default {
 .userInfomation .topics {
   font-size: 0.72rem;
   border-top: 10px #dddddd solid;
+  margin-bottom: 13px;
 }
 .userInfomation > div > p {
   padding: 12px 0 12px 12px;
@@ -99,5 +118,8 @@ export default {
 .userInfomation > div > ul > li > a {
   color: #094e99;
   text-decoration: none;
+}
+.replies img{
+    width: 30px;
 }
 </style>
