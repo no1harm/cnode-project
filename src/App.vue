@@ -1,7 +1,9 @@
 <template>
   <div id="app">
     <Header></Header>
-    <Post-list></Post-list>
+    <div class="main">
+      <Post-list></Post-list>
+    </div>
   </div>
 </template>
 
@@ -21,5 +23,12 @@ export default {
 * {
   margin: 0;
   padding: 0;
+}
+body{
+  background-color: #E1E1E1;
+}
+.main{
+  width:80%;
+  margin: 0 auto;
 }
 </style>
