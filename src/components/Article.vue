@@ -18,14 +18,14 @@
             <div class="topbar">回复</div>
             <div v-for="(reply,index) in post.replies" class="replySec">
                 <div class="replyUp">
-                    <router-link to='/'>
-                        <img :src="reply.author.avatar_url" >
+                    <router-link :to="{name:'user_info',params:{name:reply.author.loginname}}">
+                        <img :src="reply.author.avatar_url" class="replyUserImg">
                     </router-link>
-                    <router-link to='/'>
+                    <router-link :to="{name:'user_info',params:{name:reply.author.loginname}}">
                         <span>{{ reply.author.loginname}}</span>
                     </router-link>
                     <span>#{{index+1}}楼</span>
-                    <span v-if="reply.ups.lenght>0">{{ reply.ups.length}}</span>
+                    <span v-if="reply.ups.lenght>0"> ∆ {{ reply.ups.length}}</span>
                     <span v-else></span>
                 </div>
                 <p v-html="reply.content"></p>
@@ -89,9 +89,8 @@ export default {
 #reply {
   margin-top: 15px;
 }
-
-#reply img {
-  width: 30px;
+.replyUserImg {
+width: 30px;
   height: 30px;
   position: relative;
   bottom: -9px;
@@ -142,7 +141,7 @@ export default {
 
 .topic_content {
   border-top: 1px solid #e5e5e5;
-  padding: 0 10px;
+  padding: 10px 10px;
 }
 
 .markdown-text img {
