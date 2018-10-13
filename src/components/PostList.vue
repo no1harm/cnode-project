@@ -38,12 +38,16 @@
                   </router-link>
                   <span class="last_reply">{{post.last_reply_at | formatDate}}</span>
               </li>
+              <li>
+                <Pagination></Pagination>
+              </li>
           </ul>
       </div>
   </div>
 </template>
 
 <script>
+import Pagination from './Pagination'
 export default {
   name: "PostList",
   data() {
@@ -77,13 +81,16 @@ export default {
     this.isLoading = true;
     this.getData();
   },
-  components: {}
+  components: {
+    Pagination,
+  }
 };
 </script>
 
 <style scoped>
 .PostList {
   background-color: #e1e1e1;
+  margin-bottom: 30px;
 }
 .posts {
   margin-top: 10px;

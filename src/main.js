@@ -4,7 +4,7 @@ import Vue from 'vue'
 import App from './App'
 import router from './router'
 import axios from 'axios'
-import 'github-markdown-css';
+import 'github-markdown-css'
 
 Vue.config.productionTip = false
 
@@ -54,5 +54,12 @@ Vue.filter('tabFormatter',function (post) {
     return '分享'
   }else{
     return '招聘'
+  }
+})
+Vue.filter('strConversion',function(str){
+  if (str.length < 44) {
+      return str;
+  } else{
+    return `${str.slice(0,24)}...`
   }
 })

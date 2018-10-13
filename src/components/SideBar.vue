@@ -5,13 +5,19 @@
             <router-link :to="{name:'user_info',params:{name:userinfo.loginname}}">
                 <img :src="userinfo.avatar_url" >
             </router-link>
+            <span class='loginname'>
+              <router-link :to="{name:'user_info',params:{name:userinfo.loginname}}">
+                {{ userinfo.loginname}}
+              </router-link>
+              </span>
+            <p class="scoreStyle"> 积分 {{ userinfo.score}} </p>
       </div>
       <div class="recent_topics">
           <div class="topbar">作者最近主题</div>
           <ul>
               <li v-for="item in topicLimitBy5">
                   <router-link :to="{name:'post_content',params:{id:item.id,name:item.author.loginname}}">
-                    {{item.title}}
+                    {{item.title | strConversion}}
                   </router-link>
               </li>
           </ul>
@@ -21,7 +27,7 @@
           <ul>
               <li v-for="item in repliesLimitBy5">
                   <router-link :to="{name:'post_content',params:{id:item.id,name:item.author.loginname}}">
-                    {{item.title}}
+                    {{item.title | strConversion}}
                   </router-link>
               </li>
           </ul>
@@ -85,14 +91,14 @@ export default {
   margin-top: -10px;
 }
 li {
-  padding: 3px 0;
+  padding: 6px 10px;
 }
 .recent_replies ul,
 .recent_topics ul {
   margin-top: 0px;
   margin-bottom: 0px;
   list-style: none;
-  padding-left: 14px;
+  padding: 14px;
 }
 
 ul a {
@@ -130,5 +136,9 @@ img {
 
 .authersummay .topbar {
   margin-top: 0px;
+}
+.scoreStyle {
+  padding: 0 10px 10px;
+  font-size:14px;
 }
 </style>
