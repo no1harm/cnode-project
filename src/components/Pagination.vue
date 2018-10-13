@@ -55,6 +55,7 @@ export default {
               this.pagebtns.splice(4,1)
               this.pagebtns.unshift(this.pagebtns[0]-1)
           }
+          this.$emit('handleList',this.currentPage)
       }
   },
   components: {}

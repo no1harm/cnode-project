@@ -39,7 +39,7 @@
                   <span class="last_reply">{{post.last_reply_at | formatDate}}</span>
               </li>
               <li>
-                <Pagination></Pagination>
+                <Pagination @handleList='renderList'></Pagination>
               </li>
           </ul>
       </div>
@@ -54,7 +54,8 @@ export default {
     return {
       isLoading: false,
       isTopbarLoading:false,
-      posts: []
+      posts: [],
+      pageNumber:1
     };
   },
   methods: {
@@ -62,18 +63,21 @@ export default {
     getData() {
       this.$axios
         .get("https://cnodejs.org/api/v1/topics",{params:{
-          page: 1,
+          page: this.pageNumber,
           limit: 20
         }})
         .then(response => {
           this.isLoading = false; // 加载成功后去除动画
           this.isTopbarLoading = true;
           this.posts = response.data.data;
-          console.log(this.posts);
         })
         .catch(err => {
           console.log(err);
         });
+    },
+    renderList(value){
+      this.pageNumber = value
+      this.getData()
     }
   },
   // 在 Vue 实例挂载到 DOM 之前获取数据
