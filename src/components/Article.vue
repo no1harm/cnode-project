@@ -1,14 +1,24 @@
 <template>
   <div class="article">
       <div class="loading" v-if="isLoading">
-          <img src="../assets/loading.gif" >
+         <div class="loader">
+            <div class="dot"></div>
+            <div class="dot"></div>
+            <div class="dot"></div>
+            <div class="dot"></div>
+            <div class="dot"></div>
+          </div>
       </div>
       <div v-else>
         <div class="topic_header">
             <div class="topic_title">{{ post.title }}</div>
             <ul>
                 <li>· 发表于{{ post.create_at | formatDate}}</li>
-                <li>· 作者：{{post.author.loginname}}</li>
+                <li>· 作者：
+                  <router-link :to="{name:'user_info',params:{name:post.author.loginname}}">
+                    {{post.author.loginname}}
+                  </router-link>
+                  </li>
                 <li>· {{post.visit_count}}次浏览</li>
                 <li>· 来自 {{ post | tabFormatter}}</li>
             </ul>
@@ -52,7 +62,6 @@ export default {
           if (res.data.success === true) {
             this.isLoading = false;
             this.post = res.data.data;
-            console.log(this.post.content)
           }
         })
         .catch(err => {
@@ -63,6 +72,11 @@ export default {
   beforeMount() {
     this.isLoading = true;
     this.getArticleData();
+  },
+  watch:{
+    '$route'(to,from){
+      this.getArticleData()
+    }
   }
 };
 </script>
@@ -96,7 +110,7 @@ width: 30px;
   position: relative;
   bottom: -9px;
 }
-
+.topic_header a,
 #reply a,
 #reply span {
   font-size: 13px;
@@ -151,4 +165,91 @@ width: 30px;
 .replyContentStyle{
   padding: 10px 35px  0 35px;
 }
+body {
+  margin: 0;
+}
+.loader {
+  position: absolute;
+  top: 50%;
+  left: 40%;
+  margin-left: 10%;
+  transform: translate3d(-50%, -50%, 0);
+}
+.dot {
+  width: 24px;
+  height: 24px;
+  background: #3ac;
+  border-radius: 100%;
+  display: inline-block;
+  animation: slide 1s infinite;
+}
+.dot:nth-child(1) {
+  animation-delay: 0.1s;
+  background: #32aacc;
+}
+.dot:nth-child(2) {
+  animation-delay: 0.2s;
+  background: #64aacc;
+}
+.dot:nth-child(3) {
+  animation-delay: 0.3s;
+  background: #96aacc;
+}
+.dot:nth-child(4) {
+  animation-delay: 0.4s;
+  background: #c8aacc;
+}
+.dot:nth-child(5) {
+  animation-delay: 0.5s;
+  background: #faaacc;
+}
+@-moz-keyframes slide {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.3;
+    transform: scale(2);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+@-webkit-keyframes slide {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.3;
+    transform: scale(2);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+@-o-keyframes slide {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.3;
+    transform: scale(2);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+@keyframes slide {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.3;
+    transform: scale(2);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
 </style>

@@ -29,6 +29,7 @@
               <ul>
                   <li v-for="item in userInfo.recent_topics">
                       <router-link :to='{name:"post_content",params:{id:item.id}}'>{{item.title}}</router-link>
+                        <span>{{item.last_reply_at | formatDate}}</span>
                   </li>
               </ul>
           </div>
@@ -98,7 +99,6 @@ export default {
 .userInfomation .topics {
   font-size: 0.72rem;
   border-top: 10px #dddddd solid;
-  margin-bottom: 13px;
 }
 .userInfomation > div > p {
   padding: 12px 0 12px 12px;
@@ -107,13 +107,15 @@ export default {
   margin: 0;
 }
 .userInfomation > div > ul > li {
-  padding: 4px 0 4px 12px;
+  padding: 8px 12px 8px 12px;
   white-space: nowrap;
   font-size: 0.72rem;
   text-overflow: ellipsis;
   overflow: hidden;
   line-height: 30px;
   vertical-align: middle;
+  position: relative;
+  border-bottom: 1px solid #E1E1E1;
 }
 .userInfomation > div > ul > li > a {
   color: #094e99;
@@ -121,9 +123,18 @@ export default {
 }
 .replies img{
     width: 30px;
-    text-align:center;
+    position: absolute;
 }
-.replies li{
-
+.replies a{
+    position: absolute;
+    left:60px;
+}
+.replies span{
+    float: right;
+    color:#777;
+}
+.topics span{
+    float: right;
+    color:#777;
 }
 </style>

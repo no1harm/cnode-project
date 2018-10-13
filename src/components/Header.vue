@@ -1,6 +1,8 @@
 <template>
   <div class="header">
-    <img src="../assets/cnodejs_light.svg" alt="">
+    <router-link to='/'>
+      <img src="../assets/cnodejs_light.svg" alt="">
+    </router-link>
     <ul>
       <li><a href="#">首页</a></li>
       <li><a href="#">新手入门</a></li>
