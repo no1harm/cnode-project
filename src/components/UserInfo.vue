@@ -15,17 +15,17 @@
               </p>
           </section>
           <div class="replies">
-              <p>回复的主题</p>
+              <p>最近参与的话题</p>
               <ul>
                   <li v-for="item in userInfo.recent_replies">
                       <img :src="item.author.avatar_url" >
                       <router-link :to='{name:"post_content",params:{id:item.id}}'>{{item.title}}</router-link>
-                      <span>最近回复于{{item.last_reply_at | formatDate}}</span>
+                      <span>{{item.last_reply_at | formatDate}}</span>
                     </li>
               </ul>
           </div>
           <div class="topics">
-              <p>创建的主题</p>
+              <p>最近创建的话题</p>
               <ul>
                   <li v-for="item in userInfo.recent_topics">
                       <router-link :to='{name:"post_content",params:{id:item.id}}'>{{item.title}}</router-link>
@@ -121,5 +121,9 @@ export default {
 }
 .replies img{
     width: 30px;
+    text-align:center;
+}
+.replies li{
+
 }
 </style>

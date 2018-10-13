@@ -12,7 +12,7 @@
                 <li>· {{post.visit_count}}次浏览</li>
                 <li>· 来自 {{ post | tabFormatter}}</li>
             </ul>
-            <div v-html="post.content" class="topic_content"></div>
+            <div v-html="post.content" class="topic_content markdown-body"></div>
         </div>
         <div id="reply">
             <div class="topbar">回复</div>
@@ -28,7 +28,7 @@
                     <span v-if="reply.ups.lenght>0"> ∆ {{ reply.ups.length}}</span>
                     <span v-else></span>
                 </div>
-                <p v-html="reply.content" class="replyContentStyle"></p>
+                <p v-html="reply.content" class="replyContentStyle markdown-body"></p>
             </div>
         </div>
       </div>
@@ -52,6 +52,7 @@ export default {
           if (res.data.success === true) {
             this.isLoading = false;
             this.post = res.data.data;
+            console.log(this.post.content)
           }
         })
         .catch(err => {
@@ -67,7 +68,7 @@ export default {
 </script>
 
 <style >
-@import url('../assets/markdown-github.css');
+/* @import url('../assets/markdown-github.css'); */
 .topbar {
   padding: 10px;
   background-color: #f6f6f6;
@@ -147,7 +148,7 @@ width: 30px;
 .markdown-text img {
   width: 92% !important;
 }
-.replyContentStyle ul{
-  list-style: none;
+.replyContentStyle{
+  padding: 10px 35px  0 35px;
 }
 </style>
