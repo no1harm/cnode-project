@@ -101,6 +101,8 @@ export default {
 .PostList {
   background-color: #e1e1e1;
   margin-bottom: 30px;
+  margin-right: 340px;
+  margin-top: 15px;
 }
 .posts {
   margin-top: 10px;

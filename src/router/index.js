@@ -4,6 +4,7 @@ import Article from '../components/Article'
 import PostList from '../components/PostList'
 import UserInfo from '../components/UserInfo'
 import SideBar from '../components/SideBar'
+import Sider from '../components/Sider'
 Vue.use(Router)
 
 export default new Router({
@@ -13,6 +14,7 @@ export default new Router({
       path:'/',
       components:{
         main:PostList,
+        sidebar:Sider
       }
     },
     {

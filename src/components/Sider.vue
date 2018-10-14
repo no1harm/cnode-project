@@ -1,0 +1,114 @@
+<template>
+  <div class="autherinfo"> 
+      <div class="authorsummary">
+          <div class="topbar">作者</div>
+      </div>
+      <div class="recent_topics">
+          <div class="topbar">关于作者</div>
+          <ul>
+              <li><a href="https://github.com/no1harm/cnode-project">GitHub</a></li>
+              <li><a href="https://www.zhihu.com/people/chen-jun-kun/posts">Blog</a></li>
+              <li><a href="mailto:chen09869@gmail.com">Contact Me</a></li>
+          </ul>
+      </div>
+  </div>
+</template>
+
+<script>
+export default {
+  name: "Sider",
+  data() {
+    return {
+        userinfo:{}
+    };
+  },
+  computed:{
+  },
+  methods:{
+      getUserData() {
+      this.$axios
+        .get(`https://cnodejs.org/api/v1/user/${this.$route.params.name}`)
+        .then(res => {
+          if (res.data.success === true) {
+            this.isLoading = false;
+            this.userinfo = res.data.data;
+            console.log(this.userinfo)
+          }
+        })
+        .catch(err => {
+          console.log(err);
+        });
+    }
+  },
+  beforeMount(){
+      this.isLoading = true
+      this.getUserData()
+  }
+};
+</script>
+
+<style scoped>
+.authorsummary,
+.recent_replies,
+.recent_topics {
+  background-color: #fff;
+  margin-bottom: 10px;
+}
+.autherinfo {
+  width: 328px;
+  float: right;
+}
+li {
+    color: #fff;
+  background-color: #444;
+  text-align: center;
+  margin-bottom:8px; 
+  border-radius: 5px;
+}
+li:hover{
+    color: #FFFFFF;    
+    background-color: #2F96B4;
+
+}
+.recent_replies ul,
+.recent_topics ul {
+  margin-top: 0px;
+  margin-bottom: 0px;
+  list-style: none;
+  padding: 14px;
+}
+
+ul a {
+  text-decoration: none;
+    color: #FFFFFF;
+    display:block;
+  padding: 10px 10px;
+}
+
+.topbar {
+  padding: 10px;
+  background-color: #f6f6f6;
+  height: 16px;
+  font-size: 12px;
+}
+.loginname {
+  width: 100px;
+  float: right;
+  margin-top: 22px;
+  margin-right: 159px;
+  font-size: 14px;
+}
+
+.loginname a {
+  text-decoration: none;
+  color: #778087;
+}
+
+.authersummay .topbar {
+  margin-top: 0px;
+}
+.scoreStyle {
+  padding: 0 10px 10px;
+  font-size:14px;
+}
+</style>

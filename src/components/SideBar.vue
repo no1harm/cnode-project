@@ -84,11 +84,11 @@ export default {
 .recent_replies,
 .recent_topics {
   background-color: #fff;
+  margin-bottom: 10px;
 }
 .autherinfo {
   width: 328px;
   float: right;
-  margin-top: -10px;
 }
 li {
   padding: 6px 10px;
