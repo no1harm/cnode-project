@@ -21,7 +21,9 @@
                   </div>
               </li>
               <li v-for="post in posts">
-                  <img :src="post.author.avatar_url" alt="">
+                  <router-link :to="{name:'user_info',params:{name:post.author.loginname}}">
+                    <img :src="post.author.avatar_url" alt="">
+                  </router-link>
                   <span class="reply_count_padding" >
                       <span class="reply_count"> {{ post.reply_count}}</span>
                       / {{ post.visit_count}}
