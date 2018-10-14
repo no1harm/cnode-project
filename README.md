@@ -413,5 +413,31 @@ watch:{
       this.changeBtn(1)
     }
   }
+```
 
+### 增加对文章标题的长度限制
+
+对文章中同时包含了中英文的字符串的长度进行解析，限制字符串长度
+
+```javascript
+Vue.filter('postListConversion',function(str,len){
+  var result = "";
+  var strlen = 0;
+  for(var i = 0;i < str.length; i++){
+      if(str.charCodeAt(i) > 255){
+        strlen += 2; //如果是汉字，则字符串长度加2
+      } else {
+        strlen++;
+      }
+      result += str.substr(i,1);
+      if(strlen >= len){
+          break;
+      }
+  }
+  if(strlen < len){
+    return result
+  }else{
+    return `${result}...`;
+  }
+})
 ```
