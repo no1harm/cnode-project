@@ -36,7 +36,7 @@
                     {{ post | tabFormatter}}
                   </span>
                   <router-link :to="{name:'post_content',params:{id:post.id,name:post.author.loginname}}">
-                    <span>{{ post.title}}</span>
+                    <span>{{ post.title | postListConversion(64)}}</span>
                   </router-link>
                   <span class="last_reply">{{post.last_reply_at | formatDate}}</span>
               </li>
@@ -102,7 +102,7 @@ export default {
 <style scoped>
 .PostList {
   background-color: #e1e1e1;
-  margin-bottom: 30px;
+  margin-bottom: 20px;
   margin-right: 340px;
   margin-top: 15px;
 }

@@ -17,7 +17,7 @@
           <ul>
               <li v-for="item in topicLimitBy5">
                   <router-link :to="{name:'post_content',params:{id:item.id,name:item.author.loginname}}">
-                    {{item.title | strConversion}}
+                    {{item.title | postListConversion(44)}}
                   </router-link>
               </li>
           </ul>
@@ -27,7 +27,7 @@
           <ul>
               <li v-for="item in repliesLimitBy5">
                   <router-link :to="{name:'post_content',params:{id:item.id,name:item.author.loginname}}">
-                    {{item.title | strConversion}}
+                    {{item.title | postListConversion(44)}}
                   </router-link>
               </li>
           </ul>

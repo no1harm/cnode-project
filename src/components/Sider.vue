@@ -22,28 +22,6 @@ export default {
         userinfo:{}
     };
   },
-  computed:{
-  },
-  methods:{
-      getUserData() {
-      this.$axios
-        .get(`https://cnodejs.org/api/v1/user/${this.$route.params.name}`)
-        .then(res => {
-          if (res.data.success === true) {
-            this.isLoading = false;
-            this.userinfo = res.data.data;
-            console.log(this.userinfo)
-          }
-        })
-        .catch(err => {
-          console.log(err);
-        });
-    }
-  },
-  beforeMount(){
-      this.isLoading = true
-      this.getUserData()
-  }
 };
 </script>
 

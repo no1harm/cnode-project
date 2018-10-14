@@ -56,10 +56,23 @@ Vue.filter('tabFormatter',function (post) {
     return '招聘'
   }
 })
-Vue.filter('strConversion',function(str){
-  if (str.length < 44) {
-      return str;
-  } else{
-    return `${str.slice(0,24)}...`
+Vue.filter('postListConversion',function(str,len){
+  var result = "";
+  var strlen = 0;
+  for(var i = 0;i < str.length; i++){
+      if(str.charCodeAt(i) > 255){
+        strlen += 2; //如果是汉字，则字符串长度加2
+      } else {
+        strlen++;
+      }
+      result += str.substr(i,1);
+      if(strlen >= len){
+          break;
+      }
+  }
+  if(strlen < len){
+    return result
+  }else{
+    return `${result}...`;
   }
 })
