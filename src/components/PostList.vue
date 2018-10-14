@@ -24,10 +24,10 @@
                   <router-link :to="{name:'user_info',params:{name:post.author.loginname}}">
                     <img :src="post.author.avatar_url" alt="">
                   </router-link>
-                  <span class="reply_count_padding" >
-                      <span class="reply_count"> {{ post.reply_count}}</span>
-                      / {{ post.visit_count}}
-                  </span>
+                    <div class="reply_count_padding" >
+                        <span class="reply_count"> {{ post.reply_count}}</span>
+                        / {{ post.visit_count}}
+                    </div>
                   <span :class="[
                   {put_good:(post.good === true)},
                   {put_top:(post.top === true)},
@@ -158,7 +158,11 @@ li span {
   font-size: 14px;
 }
 .reply_count_padding{
-  padding: 0 5px
+  text-align: center;
+  width: 70px;
+  font-size: 10px;
+  padding: 0 5px;
+  display: inline-block;
 }
 .put_good,
 .put_top {

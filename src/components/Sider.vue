@@ -6,9 +6,9 @@
       <div class="recent_topics">
           <div class="topbar">关于作者</div>
           <ul>
-              <li><a href="https://github.com/no1harm/cnode-project">GitHub</a></li>
-              <li><a href="https://www.zhihu.com/people/chen-jun-kun/posts">Blog</a></li>
-              <li><a href="mailto:chen09869@gmail.com">Contact Me</a></li>
+              <li><a href="https://github.com/no1harm/cnode-project" target='_blank'>GitHub</a></li>
+              <li><a href="https://www.zhihu.com/people/chen-jun-kun/posts" target='_blank'>Blog</a></li>
+              <li><a href="mailto:chen09869@gmail.com" target='_blank'>Contact Me</a></li>
           </ul>
       </div>
   </div>

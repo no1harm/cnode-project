@@ -94,7 +94,6 @@ button {
   width: 55px;
   height: 29px;
 }
-
 .pagebtn {
   position: relative;
   bottom: 1px;
@@ -102,6 +101,7 @@ button {
   margin: 0 4px;
 }
 
+button:hover,
 .currentPage {
   color: white;
   background-color: #1f1b1b;
