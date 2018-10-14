@@ -352,3 +352,66 @@ data() {
       }
   },
 ```
+
+---
+
+## 完善
+
+### tab 菜单
+
+可以选择不同的主题进行浏览：
+
+![tab菜单](https://ws1.sinaimg.cn/large/006cedGGgy1fw7rd4ikq0j30xp04qjrm.jpg)
+
+1.tab 菜单中每个选项绑定点击事件，点击后根据传入参数的不同获取不同主题的内容：
+
+```html
+<!-- PostList.vue -->
+<span @click="changeTab('')">全部</span>
+<span @click="changeTab('good')">精华</span>
+<span @click="changeTab('share')">分享</span>
+<span @click="changeTab('ask')">问答</span>
+<span @click="changeTab('job')">招聘</span>
+```
+
+```javascript
+// PostList.vue
+changeTab(value){
+    this.tab = value
+    this.getData()
+}
+```
+
+改变 tab，重新执行方法 getData()，获取不同主题帖子的数据，在页面中渲染出来。
+
+2.点击了 tab 菜单后，页码回到该主题的第1页
+
+如果只停留在上一步，则会出现这样的问题：点击 `问答` -> 跳转到第6页 -> 再点击 `首页` -> 页码显示停留在 `首页` 的第6页，但是内容实际上是 `首页` 的第1页
+
+也就是他的样式没有转换过来。
+
+解决方法：父组件把 tab 当成参数传递给子组件，子组件 watch 这个 tab，一旦这个 tab 发生变化，则回到这个 tab 对应的主题的第一页：
+
+```html
+<!-- PostList.vue -->
+<Pagination @handleList='renderList' :tab='tab'></Pagination>
+```
+
+```javascript
+// Pagination
+...
+
+props:[
+    'tab'
+  ],
+
+...
+
+watch:{
+    tab:function(val,oldVal){
+      this.pagebtns = [1,2,3,4,5,'...']
+      this.changeBtn(1)
+    }
+  }
+
+```

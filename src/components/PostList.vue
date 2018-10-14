@@ -14,9 +14,7 @@
               <li>
                   <div class="toobar" v-if="isTopbarLoading">
                     <span @click="changeTab('')">全部</span>
-                    <span @click="changeTab('good')">
-                      精华
-                    </span>
+                    <span @click="changeTab('good')">精华</span>
                     <span @click="changeTab('share')">分享</span>
                     <span @click="changeTab('ask')">问答</span>
                     <span @click="changeTab('job')">招聘</span>
