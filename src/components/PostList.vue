@@ -13,16 +13,18 @@
           <ul>
               <li>
                   <div class="toobar" v-if="isTopbarLoading">
-                    <span>全部</span>
-                    <span>精华</span>
-                    <span>分享</span>
-                    <span>问答</span>
-                    <span>招聘</span>
+                    <span @click="changeTab('')">全部</span>
+                    <span @click="changeTab('good')">
+                      精华
+                    </span>
+                    <span @click="changeTab('share')">分享</span>
+                    <span @click="changeTab('ask')">问答</span>
+                    <span @click="changeTab('job')">招聘</span>
                   </div>
               </li>
               <li v-for="post in posts">
                   <img :src="post.author.avatar_url" alt="">
-                  <span>
+                  <span class="reply_count_padding" >
                       <span class="reply_count"> {{ post.reply_count}}</span>
                       / {{ post.visit_count}}
                   </span>
@@ -39,7 +41,7 @@
                   <span class="last_reply">{{post.last_reply_at | formatDate}}</span>
               </li>
               <li>
-                <Pagination @handleList='renderList'></Pagination>
+                <Pagination @handleList='renderList' :tab='tab'></Pagination>
               </li>
           </ul>
       </div>
@@ -55,7 +57,8 @@ export default {
       isLoading: false,
       isTopbarLoading:false,
       posts: [],
-      pageNumber:1
+      pageNumber:1,
+      tab:''
     };
   },
   methods: {
@@ -64,7 +67,8 @@ export default {
       this.$axios
         .get("https://cnodejs.org/api/v1/topics",{params:{
           page: this.pageNumber,
-          limit: 20
+          limit: 20,
+          tab:this.tab
         }})
         .then(response => {
           this.isLoading = false; // 加载成功后去除动画
@@ -74,6 +78,10 @@ export default {
         .catch(err => {
           console.log(err);
         });
+    },
+    changeTab(value){
+      this.tab = value
+      this.getData()
     },
     renderList(value){
       this.pageNumber = value
@@ -87,7 +95,7 @@ export default {
   },
   components: {
     Pagination,
-  }
+  },
 };
 </script>
 
@@ -147,7 +155,9 @@ li span {
   color: #9e78c0;
   font-size: 14px;
 }
-
+.reply_count_padding{
+  padding: 0 5px
+}
 .put_good,
 .put_top {
   background: #80bd01;

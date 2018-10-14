@@ -16,11 +16,15 @@
 import $ from 'jquery'
 export default {
   name: "Pagination",
+  props:[
+    'tab'
+  ],
   data() {
     return {
         'pagebtns':[1,2,3,4,5,'...'],
         currentPage:1,
-        isEllipsis:false
+        isEllipsis:false,
+        parentProp:this.$parent.pageNumber
     };
   },
   methods:{
@@ -58,7 +62,13 @@ export default {
           this.$emit('handleList',this.currentPage)
       }
   },
-  components: {}
+  components: {},
+  watch:{
+    tab:function(val,oldVal){
+      this.pagebtns = [1,2,3,4,5,'...']
+      this.changeBtn(1)
+    }
+  }
 };
 </script>
 
