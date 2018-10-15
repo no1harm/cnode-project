@@ -26,6 +26,7 @@
         </div>
         <div id="reply">
             <div class="topbar">回复</div>
+            <div v-if="post.replies.length === 0" class="noReplyStyle">本文暂无评论...</div>
             <div v-for="(reply,index) in post.replies" class="replySec">
                 <div class="replyUp">
                     <router-link :to="{name:'user_info',params:{name:reply.author.loginname}}">
@@ -62,6 +63,7 @@ export default {
           if (res.data.success === true) {
             this.isLoading = false;
             this.post = res.data.data;
+            console.log(this.post.replies.length)
           }
         })
         .catch(err => {
@@ -82,6 +84,12 @@ export default {
 </script>
 
 <style scoped>
+.noReplyStyle{
+  margin: 10px;
+  padding-bottom: 10px;
+  font-size: 12px;
+  color: #778087;
+}
 .topbar {
   padding: 10px;
   background-color: #f6f6f6;
@@ -102,6 +110,7 @@ export default {
 
 #reply {
   margin-top: 15px;
+  margin-bottom: 15px;
 }
 .replyUserImg {
 width: 30px;
