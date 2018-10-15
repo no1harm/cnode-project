@@ -36,7 +36,7 @@
                     {{ post | tabFormatter}}
                   </span>
                   <router-link :to="{name:'post_content',params:{id:post.id,name:post.author.loginname}}">
-                    <span>{{ post.title | postListConversion(54)}}</span>
+                    <span class="topic_title">{{ post.title | postListConversion(54)}}</span>
                   </router-link>
                   <span class="last_reply">{{post.last_reply_at | formatDate}}</span>
               </li>
@@ -98,6 +98,11 @@ export default {
   components: {
     Pagination,
   },
+  watch:{
+    '$route'(to,from){
+      this.getData()
+    }
+  }
 };
 </script>
 
@@ -112,6 +117,8 @@ export default {
 .posts {
   margin-top: 10px;
 }
+
+
 
 .PostList img {
   height: 30px;
@@ -229,9 +236,49 @@ a {
   text-decoration: none;
   color: black;
 }
-
 a:hover {
   text-decoration: underline;
+}
+@media screen and (max-width: 979px){
+  .toobar span {
+    margin: 0 13px;
+  }
+  .PostList {
+    margin: 10px 10px 564px;
+  }
+  ul li:not(:first-child){
+    font-size: 14px;
+    padding-bottom: 18px;
+    position: relative;
+  }
+  .reply_count_padding{
+    padding: 0;
+    width: 56px;
+  }
+  .put_good,
+  .put_top,
+  .topiclist-tab{
+    margin-right: 5px;
+  }
+  li span{
+    line-height: 0
+  }
+  .topic_title{
+    max-width: 58%;
+    -o-text-overflow: ellipsis;
+    white-space: nowrap;
+    display: inline-block;
+    vertical-align: middle;
+    font-size: 14px;
+    line-height: 30px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  .last_reply{
+    position: absolute;
+    right: 12px; 
+    bottom: 12px;
+  }
 }
 
 .loading {
@@ -321,5 +368,17 @@ a:hover {
     transform: scale(1);
   }
 }
-
+@media screen and (max-width: 979px){
+  .loading {
+    text-align: center;
+    padding-top: 100px;
+  }
+  .loader {
+    position: absolute;
+    top: 30%;
+    left: 35%;
+    margin-left: 10%;
+    transform: translate3d(-50%, -50%, 0);
+  }
+}
 </style>

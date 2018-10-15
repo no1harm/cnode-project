@@ -22,7 +22,7 @@ export default {
 
 <style scoped>
 .footer{
-  background-color: #444;
+  background-color: #E1E1E1;
   height:50px;
   cursor: pointer;
   text-align: center;
@@ -34,5 +34,14 @@ export default {
 img{
   margin-top: 10px;
   max-width: 30px;
+}
+@media screen and (max-width: 979px){
+  .footer{
+    height: 100px;
+  }
+  img{
+    margin-top: 20px;
+    max-width: 20px;
+  }
 }
 </style>

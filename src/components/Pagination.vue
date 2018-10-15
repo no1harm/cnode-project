@@ -106,4 +106,20 @@ button:hover,
   color: white;
   background-color: #1f1b1b;
 }
+@media screen and (max-width: 979px){
+  .pagination{
+    margin-top:10px; 
+    margin-bottom: 0;
+    padding: 0;
+    border: none;
+  }
+  
+  button{
+    padding: 0;
+  }
+  .pagebtn{
+    width: 30px;
+    margin: 0 1px;
+  }
+}
 </style>

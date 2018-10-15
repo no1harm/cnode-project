@@ -173,6 +173,11 @@ width: 30px;
 .replyContentStyle{
   padding: 10px 35px  0 35px;
 }
+@media screen and (max-width: 979px){
+  .article:not(:first-child){
+    margin: 10px 10px 10px;
+  }
+}
 body {
   margin: 0;
 }
@@ -259,5 +264,17 @@ body {
     transform: scale(1);
   }
 }
-
+@media screen and (max-width: 979px){
+  .loading {
+    text-align: center;
+    padding-top: 100px;
+  }
+  .loader {
+    position: absolute;
+    top: 30%;
+    left: 35%;
+    margin-left: 10%;
+    transform: translate3d(-50%, -50%, 0);
+  }
+}
 </style>

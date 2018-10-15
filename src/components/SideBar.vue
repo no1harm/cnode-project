@@ -141,4 +141,23 @@ img {
   padding: 0 10px 10px;
   font-size:14px;
 }
+@media screen and (max-width: 979px){
+  .autherinfo{
+    float: none;
+    position: absolute;
+    bottom: -4px;
+    left: 22px;
+    display: none;
+  }
+  ul a{
+    max-width: 96%;
+    -o-text-overflow: ellipsis;
+    white-space: nowrap;
+    display: inline-block;
+    vertical-align: middle;
+    line-height: 30px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+}
 </style>

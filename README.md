@@ -441,3 +441,32 @@ Vue.filter('postListConversion',function(str,len){
   }
 })
 ```
+
+### 媒体查询 响应移动端
+
+如：
+
+```css
+@media screen and (max-width: 979px){
+  .autherinfo{
+    float: none;
+    position: absolute;
+    bottom: -4px;
+    left: 22px;
+  }
+  ul a{
+    max-width: 96%;
+    -o-text-overflow: ellipsis;
+    white-space: nowrap;
+    display: inline-block;
+    vertical-align: middle;
+    line-height: 30px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+}
+```
+
+当设备分辨率宽度小于 979px 时，样式会生效。
+
+本来打算是另写一个 css 文件，存放在 /assets/css 的文件目录下，然后在 main.js 中通过 `import './assets/css/main.css'` 引入的，但是查阅资料的时候看到说这样做并不好，到时候需要修改样式会很麻烦，所以就写在了每个组件的 `<style>` 中。

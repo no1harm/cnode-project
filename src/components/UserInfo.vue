@@ -147,6 +147,31 @@ export default {
   text-align: center;
   padding-top: 300px;
 }
+@media screen and (max-width: 979px){
+  .userInfomation > div > ul > li > a{
+    max-width: 66%;
+    -o-text-overflow: ellipsis;
+    white-space: nowrap;
+    display: inline-block;
+    vertical-align: middle;
+    line-height: 30px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  .userInfomation .topics > ul > li > a{
+    max-width: 80%;
+    -o-text-overflow: ellipsis;
+    white-space: nowrap;
+    display: inline-block;
+    vertical-align: middle;
+    line-height: 30px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  .userInfomation{
+    width: 96%;
+  }
+}
 .loader {
   position: absolute;
   top: 30%;

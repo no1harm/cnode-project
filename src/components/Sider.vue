@@ -103,4 +103,12 @@ ul a {
 .imgWrapper{
   text-align: center;
 }
+@media screen and (max-width: 979px){
+  .autherinfo{
+    float: none;
+    position: absolute;
+    right: 24px;
+    bottom: -564px;
+  }
+}
 </style>

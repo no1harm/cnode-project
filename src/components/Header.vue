@@ -1,6 +1,6 @@
 <template>
   <div class="header">
-    <router-link :to='{name:"root"}'>
+    <router-link to='/'>
       <img src="../assets/cnodejs_light.svg" alt="">
     </router-link>
     <ul>
@@ -12,8 +12,8 @@
       <li><a href="#">新手入门</a></li>
       <li><a href="#">API</a></li>
       <li><a href="#">关于</a></li>
-      <li><a href="#">注册</a></li>
-      <li><a href="#">登录</a></li>
+      <!-- <li><a href="#">注册</a></li>
+      <li><a href="#">登录</a></li> -->
     </ul>
   </div>
 </template>
@@ -56,5 +56,18 @@ a{
   color: #ccc;
   font-size: 13px;
   text-shadow: none;
+}
+@media (max-width: 979px){
+  .header{
+    height: 100px;
+  }
+  img{
+      margin-left: 20px;
+  }
+  ul{
+    margin-right: 0;
+    padding-left: 10px;
+    float: none;
+  }
 }
 </style>
