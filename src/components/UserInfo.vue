@@ -149,8 +149,8 @@ export default {
 }
 .loader {
   position: absolute;
-  top: 50%;
-  left: 40%;
+  top: 30%;
+  left: 25%;
   margin-left: 10%;
   transform: translate3d(-50%, -50%, 0);
 }

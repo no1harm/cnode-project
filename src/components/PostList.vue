@@ -13,11 +13,11 @@
           <ul>
               <li>
                   <div class="toobar" v-if="isTopbarLoading">
-                    <span @click="changeTab('')">全部</span>
-                    <span @click="changeTab('good')">精华</span>
-                    <span @click="changeTab('share')">分享</span>
-                    <span @click="changeTab('ask')">问答</span>
-                    <span @click="changeTab('job')">招聘</span>
+                    <span @click="changeTab('',1)" :class="{isActived:isSHow === 1}">全部</span>
+                    <span @click="changeTab('good',2)" :class="{isActived:isSHow === 2}">精华</span>
+                    <span @click="changeTab('share',3)" :class="{isActived:isSHow === 3}">分享</span>
+                    <span @click="changeTab('ask',4)" :class="{isActived:isSHow === 4}">问答</span>
+                    <span @click="changeTab('job',5)" :class="{isActived:isSHow === 5}">招聘</span>
                   </div>
               </li>
               <li v-for="post in posts">
@@ -58,7 +58,8 @@ export default {
       isTopbarLoading:false,
       posts: [],
       pageNumber:1,
-      tab:''
+      tab:'',
+      isSHow:1
     };
   },
   methods: {
@@ -79,8 +80,9 @@ export default {
           console.log(err);
         });
     },
-    changeTab(value){
+    changeTab(value,num){
       this.tab = value
+      this.isSHow = num
       this.getData()
     },
     renderList(value){
@@ -100,6 +102,7 @@ export default {
 </script>
 
 <style scoped>
+
 .PostList {
   background-color: #e1e1e1;
   margin-bottom: 20px;
@@ -159,7 +162,7 @@ li span {
 }
 .reply_count_padding{
   text-align: center;
-  width: 70px;
+  width: 76px;
   font-size: 10px;
   padding: 0 5px;
   display: inline-block;
@@ -203,17 +206,23 @@ li span {
   height: 40px;
   background-color: #f5f5f5;
 }
-
+.toobar span.isActived{
+  color: #fff;
+  background-color: #80bd01;
+}
 .toobar span {
   font-size: 14px;
   color: #80bd01;
   line-height: 40px;
   margin: 0 10px;
   cursor: pointer;
+  padding: 3px 5px;
+  border-radius: 5px;
 }
 
 .toobar span:hover {
-  color: #9e78c0;
+  color: #fff;
+  background-color: #80bd01;
 }
 
 a {
@@ -231,8 +240,8 @@ a:hover {
 }
 .loader {
   position: absolute;
-  top: 50%;
-  left: 40%;
+  top: 30%;
+  left: 25%;
   margin-left: 10%;
   transform: translate3d(-50%, -50%, 0);
 }

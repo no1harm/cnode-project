@@ -27,7 +27,7 @@ export default {
 * {
   margin: 0;
   padding: 0;
-  transition: All 0.5s
+  transition: All 0.3s
 }
 body{
   background-color: #E1E1E1;

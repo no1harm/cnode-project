@@ -2,13 +2,16 @@
   <div class="autherinfo"> 
       <div class="authorsummary">
           <div class="topbar">作者</div>
+          <div class="imgWrapper">
+            <img src="../assets/wechat.png" alt="">
+          </div>
       </div>
       <div class="recent_topics">
           <div class="topbar">关于作者</div>
           <ul>
               <li><a href="https://github.com/no1harm/cnode-project" target='_blank'>GitHub</a></li>
               <li><a href="https://www.zhihu.com/people/chen-jun-kun/posts" target='_blank'>Blog</a></li>
-              <li><a href="mailto:chen09869@gmail.com" target='_blank'>Contact Me</a></li>
+              <li><a href="mailto:chen09869@gmail.com" target='_blank'>Email</a></li>
           </ul>
       </div>
   </div>
@@ -46,6 +49,7 @@ li {
 li:hover{
     color: #FFFFFF;    
     background-color: #2F96B4;
+    box-shadow: 4px 4px 24px 0px rgba(0,0,0,0.3);
 
 }
 .recent_replies ul,
@@ -88,5 +92,15 @@ ul a {
 .scoreStyle {
   padding: 0 10px 10px;
   font-size:14px;
+}
+.authorsummary img{
+  width: 200px;
+  margin: 40px;
+}
+.authorsummary img:hover{
+  box-shadow: 6px 6px 24px 0px rgba(0,0,0,0.3);
+}
+.imgWrapper{
+  text-align: center;
 }
 </style>
