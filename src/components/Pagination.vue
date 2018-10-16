@@ -1,14 +1,14 @@
 <template>
   <div class="pagination">
-      <button @click="changeBtn">首页</button>
-      <button @click="changeBtn">上一页</button>
+      <button @click="changeBtn" class="nostyle">首页</button>
+      <button @click="changeBtn" class="nostyle">上一页</button>
       <button v-if="isEllipsis" class="pagebtn">...</button>
       <button v-for="btn in pagebtns" 
       :class="[{currentPage:btn === currentPage},{pagebtn:true}]"
       @click="changeBtn(btn)">
           {{btn}}
       </button>
-      <button @click="changeBtn">下一页</button>
+      <button @click="changeBtn" class="nostyle">下一页</button>
   </div>
 </template>
 
@@ -112,14 +112,17 @@ button:hover,
     margin-bottom: 0;
     padding: 0;
     border: none;
-  }
-  
+  } 
   button{
     padding: 0;
   }
   .pagebtn{
     width: 30px;
     margin: 0 1px;
+  }
+  button:hover{
+    color: #778087;
+    background-color: #fff;
   }
 }
 </style>
