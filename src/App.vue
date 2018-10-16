@@ -19,7 +19,7 @@ export default {
     Header,
     PostList,
     Footer
-  }
+  },
 };
 </script>
 

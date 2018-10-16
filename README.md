@@ -470,3 +470,77 @@ Vue.filter('postListConversion',function(str,len){
 当设备分辨率宽度小于 979px 时，样式会生效。
 
 本来打算是另写一个 css 文件，存放在 /assets/css 的文件目录下，然后在 main.js 中通过 `import './assets/css/main.css'` 引入的，但是查阅资料的时候看到说这样做并不好，到时候需要修改样式会很麻烦，所以就写在了每个组件的 `<style>` 中。
+
+---
+
+## Registered / Login
+
+注册和登录页
+
+1.注册页：
+
+使用 localStorage 存储注册用户的用户名和密码，v-model 绑定输入框的 value ，判断 localStorage 里有没有 value：
+
+有，可以直接登录；无，则注册成功。
+
+```javascript
+methods:{
+      submitInfo(){
+          //判断是否存在此用户名
+          if (localStorage.getItem(this.username) === null) {
+              this.usernameIsRight = false
+
+              //存入用户名和密码
+              localStorage.setItem(this.username,this.password)
+              this.isWorks = true
+              setTimeout(()=>{
+
+                // 跳转到首页
+                this.$router.push({path:'/login'})
+              },2000)
+            }else{
+                this.usernameIsRight = true
+            }
+      }
+  }
+```
+
+2.登录页：
+
+通过 localStorage 判断输入框 value，匹配则转到首页，不匹配则提示密码错误或者用户未注册。
+
+```javascript
+methods:{
+      submitInfo(){
+          //判断是否存在此用户名
+          if (localStorage.getItem(this.username) === null) {
+              this.usernameIsRight = true
+
+            //   判断用户名和密码是否匹配
+            }else if(localStorage.getItem(this.username) !== this.password){
+                this.passwordIsRight = true
+            }
+
+            // 用户名和密码匹配则带着参数（用户名）跳转到 /user/
+            else if(localStorage.getItem(this.username) === this.password){
+                this.usernameIsRight = false
+                this.$router.push({name:'user',params:{name:this.username}})
+
+                // 这里先留个坑，如果不刷新的话，则页面登录状态不会改变，应该是和组件的生命周期有关系，目前暂时没有搞清楚
+                window.location.reload()
+            }
+      }
+  }
+```
+
+3.首页：
+
+通过 url 参数拿到 用户名：`username:this.$route.params.name`
+
+然后把用户名渲染到页面中。
+
+这里说说没有解决的 bug ：
+
+本来打算使用 eventBus 来传递数据，登录的用户名传给首页，然后首页判断用户名是否存在 localStorage 中，再去渲染，这样感觉流程比较流畅；但是点击提交按钮后页面会跳转到首页，组件的生命周期也会变化，所有没有想到好的接收数据的方法。
+
+我想我应该试试 vuex。

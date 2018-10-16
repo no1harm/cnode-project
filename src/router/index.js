@@ -5,6 +5,8 @@ import PostList from '../components/PostList'
 import UserInfo from '../components/UserInfo'
 import SideBar from '../components/SideBar'
 import Sider from '../components/Sider'
+import Registered from '../components/Registered'
+import Login from '../components/Login'
 Vue.use(Router)
 
 export default new Router({
@@ -12,6 +14,14 @@ export default new Router({
     {
       name:'root',
       path:'/',
+      components:{
+        main:PostList,
+        sidebar:Sider
+      }
+    },
+    {
+      name:'user',
+      path:'/user/:name',
       components:{
         main:PostList,
         sidebar:Sider
@@ -30,6 +40,20 @@ export default new Router({
       path:'/userinfo/:name',
       components:{
         main:UserInfo,
+      }
+    },
+    {
+      name:'registered',
+      path:'/registered',
+      components:{
+        main:Registered
+      }
+    },
+    {
+      name:'Login',
+      path:'/login',
+      components:{
+        main:Login
       }
     }
   ]
