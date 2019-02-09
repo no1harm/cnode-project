@@ -107,7 +107,7 @@ ul a {
   .autherinfo{
     float: none;
     position: absolute;
-    right: 24px;
+    right: 3%;
     bottom: -564px;
   }
 }
